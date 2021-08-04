@@ -1,0 +1,78 @@
+<%layout('layouts/boilerplate')%>
+
+ <div class="col-6 offset-3">
+     
+    <h1>Edit Campground</h1>
+
+    <form action="/campgrounds/<%=campgrounds._id%>?_method=PUT" class="needs-validation" method = "POST" novalidate enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="Title" class="form-label"> Title </label>
+            <input type="text" class=" form-control" name="campground[title]" id="Title " value="<%=campgrounds.title%>" required>
+            <div class="valid-feedback">
+                Looks good!
+          </div>
+          <div class="invalid-feedback">
+                 Please select a valid Title.
+        </div>
+
+    </div>
+
+    <div class="mb-3"> 
+        <label for="Location" class="form-label"> Location  </label>
+            <input type="text"class="form-control" name="campground[location]" id="Location"  value="<%=campgrounds.location%>" required>
+            <div class="valid-feedback">
+                Looks good!
+             </div>
+              <div class="invalid-feedback">
+                   Please select a valid location.
+              </div>
+    </div>
+
+    <div class="input-group mb-3"> 
+        <span for="price" class=" input-group-text ">$</span>
+            <input type="text"class="form-control" name="campground[price]" id="price" value="<%=campgrounds.price%>" required>
+            <span class="input-group-text">.00</span>
+            <div class="valid-feedback">
+                Looks good!
+          </div>
+          <div class="invalid-feedback">
+              Please select a valid price in number.
+          </div>
+          
+    </div>
+
+    <div class="mb-3"> 
+        <label for="description" class="form-label"> Description  </label>
+            <textarea type="text"class="form-control" name="campground[description]" id="description" required><%=campgrounds.description%> </textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                 Can't be left empty.
+             </div>
+    </div>
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Add more Image(s)..</label>
+        <input class="form-control" type="file" id="image" name="image" multiple>
+      </div>
+      <div class="mb-3">
+          <% campgrounds.images.forEach((img, i)=>{ %> 
+            <img src="<%=img.thumbnail%> " class="img-thumbnail"alt="">
+            <div class="form-inline-check">
+                <input  type="checkbox" name="deleteImages[]" value="<%=img.filename%>" id="image-<%=i%>">
+                <label class="form-check-label" for="image-<%=i%>">
+                    Delete?
+                   </label>
+              </div>
+              
+            <% }) %> 
+            
+      </div>
+    
+    <button class="btn btn-success mb-3" type="submit">Update</button>
+</form>
+<footer>
+    <a href="/campgrounds/<%=campgrounds._id%>">Back to Campground</a>
+</footer>
+</div>

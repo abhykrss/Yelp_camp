@@ -1,0 +1,65 @@
+<%layout('layouts/boilerplate')%>
+
+
+ <div class="col-6 offset-3">
+
+    <h1>ADD New Campground</h1>
+
+<form action="/campgrounds/" class="needs-validation" method = "POST" novalidate enctype="multipart/form-data">
+
+    <div class="mb-3">
+        <label for="Title" class="form-label"> Title </label>
+            <input type="text" class=" form-control" name="campground[title]" id="Title"  required>
+            <div class="valid-feedback">
+                 Looks good!
+           </div>
+           <div class="invalid-feedback">
+                  Please select a valid Title.
+         </div>
+    </div>
+
+    <div class="mb-3"> 
+        <label for="Location" class="form-label"> Location  </label>
+            <input type="text"class="form-control" name="campground[location]" id="Location" required>
+            <div class="valid-feedback">
+              Looks good!
+           </div>
+            <div class="invalid-feedback">
+                 Please select a valid location.
+            </div>
+    </div>
+
+    <div class="input-group mb-3"> 
+        <span for="price" class=" input-group-text ">$</span>
+            <input type="text"class="form-control" name="campground[price]" id="price" required>
+            <span class="input-group-text">.00</span>
+            <div class="valid-feedback">
+                   Looks good!
+             </div>
+             <div class="invalid-feedback">
+                 Please select a valid price in number.
+             </div>
+             
+  </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Upload Image(s)..</label>
+            <input class="form-control" type="file" id="image" name="image" multiple>
+          </div>
+
+    <div class="mb-3"> 
+        <label for="description" class="form-label">Description</label>
+            <textarea type="text"class="form-control" name="campground[description]" id="description" required></textarea>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                 Can't be left empty.
+             </div>
+    </div>
+    
+    <button class="btn btn-success mb-3" type="submit">Add Campground</button>
+</form>
+<footer>
+    <a href="/campgrounds">All Campgrounds</a>
+</footer>
